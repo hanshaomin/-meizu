@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href=".css/delaite.css">
+    <link rel="stylesheet" href=".css/header.css">
+    <link rel="stylesheet" href=".css/footer.css">
+    <iframe src="header.html" frameborder="0" width="100%"></iframe>
+    <title>Document</title>
+</head>
+<body>
+        <div class="container">
+                <ul class="breadcrumb">
+                        <li class="breadcrumb-item float-right" id="dhl_meizu">
+                            <a href="">魅族16X</a>
+                        </li>
+                        <li class="breadcrumb-item float-left" id="dhl_sy">
+                            <a href="">首页</a>
+                        </li>
+                        <li class="breadcrumb-item" id="dhl_gs">
+                            <a href="">概述</a>
+                        </li>
+                        <li class="breadcrumb-item" id="dhl_cjwt">
+                            <a href="">常见问题</a>
+                        </li>
+                    </ul>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <!-- 大照片-->
+                        <img src="./魅族图片_files/md-phone-1.jpg" class="i1" alt=""/>
+                        <!-- 小图片-->
+                        <div>
+                            <ul class="d-flex justify-content-lg-between list-unstyled">
+                                <li><img src="./魅族图片_files/delatis.jpg" class="b1" alt=""/></li>
+                                <li><img src="./魅族图片_files/delatis_sm_lg.jpg" class="b1" alt=""/></li>
+                                <li><img src="./魅族图片_files/delatis.jpg" class="b1" alt=""/></li>
+                                <li><img src="./魅族图片_files/delatis_sm_lg.jpg" class="b1" alt=""/></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <h1>魅族 16Xs</h1>
+                        <h5>【限时3期免息】极边全面屏 | 4800W AI三摄 | 疾速屏下指纹 | 4000mAh大电池 | 高通骁龙675 | Onemind 3.0 | 绚丽多彩新色系</h5>
+                        <div class="alert">
+                            <span>售价： <h3>￥5369</h3> </span>
+                            <p>加价购 另加19元起，即可换购超值商品 <a href="">立即加购 >></a></p>
+                        </div>
+                        <p> 客服：联系客服<img src="img/product_detail/kefuf.gif" alt=""/> </p>
+                        <p>支持：   <i id="i1">√</i>支持花呗 <i id="i1">√</i>7天无理由退货 <i id="i1">√</i>顺丰发货 <i id="i1">√</i>30天换货</p>
+                        <div class="clearfix">
+                            <div class="float-left">
+                            
+                                <a href="" class="btn btn-outline-secondary">魅族16s</a>
+                                <a href="" class="btn btn-outline-secondary">魅族16x</a>
+                                <a href="" class="btn btn-outline-secondary">魅族th</a>
+                                <a href="" class="btn btn-outline-secondary">魅族16Xx</a>
+                                <a href="" class="btn btn-outline-secondary">魅族note9</a>
+                                <a href="" class="btn btn-outline-secondary">魅族plus</a>
+                                <a href="" class="btn btn-outline-secondary">碳纤色</a>
+                                <a href="" class="btn btn-outline-secondary">凝光白</a>
+                                <a href="" class="btn btn-outline-secondary">幻影蓝</a>
+                                <a href="" class="btn btn-outline-secondary">6+128G</a>
+                                <a href="" class="btn btn-outline-secondary">6+128G</a>
+                                <a href="" class="btn btn-outline-secondary">6+128G</a>
+                                <a href="" class="btn btn-outline-secondary">官方标配</a>
+                                <a href="" class="btn btn-outline-secondary">碎屏保套餐</a>
+                            </div>
+                        </div>
+                        <div class="d-flex  align-items-center p1">
+                            <p c>数量：</p>
+                            <button id="b1" class="text-white font-weight-bold border-0 px-2 rounded">-</button>
+                            <input id="nn" type="text" value="0" class="text-center my_input-w2 w-10"/>
+                            <button id="b2" class="text-white font-weight-bold border-0 px-2 rounded">+</button>
+                        </div>
+                        <button id="buy">立即购买</button>
+                    </div>
+                </div>
+                <h1>商品详情</h1>
+                <img src="./魅族图片_files/Cgbj0V0CGZGANJQPAAz5dnTslnA241.jpg" alt="">
+                <img src="./魅族图片_files/de.jpg" alt="">
+                <img src="./魅族图片_files/Cgbj0V0CGZiAc0l9AAkjkIHMHxg417.jpg" alt="">
+            </div>
+<iframe src="footer.html" frameborder="0" width="100%" height="220px"></iframe>
+<script>
+    var b1=document.getElementById("b1")
+        b1.onclick=function(){
+           
+            var nn=document.getElementById("nn").value
+            if(nn>0){
+            nn--
+            document.getElementById("nn").value=nn  
+            }
+    }
+    var b2=document.getElementById("b2")
+    b2.onclick=function(){
+        var nn=document.getElementById("nn").value
+            nn++
+            document.getElementById("nn").value=nn
+    }
+    
+</script>
+</body>
+</html>
+

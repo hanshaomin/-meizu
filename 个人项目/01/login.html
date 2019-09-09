@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href=".css/login.css">
+    <link rel="stylesheet" href=".css/header.css">
+    <link rel="stylesheet" href=".css/footer.css">
+    <iframe src="header.html" frameborder="0" width="100%"></iframe>
+    <title>Document</title>
+</head>
+<body>
+    <div id="bg0">
+       <div id="bg1">
+        <form action="" class="t1" novalidate="novalidate">
+            <div class="t2">
+                <h3 class="t3">验证码登录</h3>
+                    <div id="">
+                        <!-- <span> <input type="text" value="+86 ^"> <i id="pti"></i> </span> -->
+                        <input type="name" placeholder="请输入用户名" class="pt1" id="sname">
+                        <div class="vali_info" id="div1">8以内的数字,字母组成</div>
+                        <input type="password" placeholder="请输入密码" class="pt1" id="spwd">
+                        <div class="vali_info" id="div2">六位数字组成</div>
+                        <a href="javascript:;" id="btn1">登录</a>
+                        <a href="" id="a1">注册</a><a href="" id="a2">忘记密码？</a>
+                    </div>
+            </div>
+        </form>
+       </div>
+    </div>
+    <script>
+    var txtName=document.getElementById("sname")
+    // console.log(txtName)
+    var txtPwd=document.getElementById("spwd")
+    // console.log(txtPwd)
+    txtName.onfocus=
+    txtPwd.onfocus=function(){
+	//3. 查找要修改的元素
+	//先获得当前文本框
+	var txt=this;
+    var div=txt.nextElementSibling;
+    console.log(div)
+    div.className="";
+}
+//a=b=3;
+//2. 绑定事件处理函数: 
+//为两个文本框绑定失去焦点函数
+      //当失去焦点
+txtName.onblur=function(){
+	//定义姓名验证的正则表达式:
+	var reg=/^\w{1,10}$/;
+	//调用封装好的vali函数
+	vali(this,reg);
+	//vali中的this->window 是错的
+	//onblur中的this是.前的txtName 是对的
+	//所以在调用vali时，将onblur中正确的this，传入函数，交给形参txt
+}
+//考虑1个问题: 函数中缺什么是自己没有的！缺什么，就要定义什么形参，请外部将来传入！
+function vali(txt,reg){
+	//用reg验证文本框的内容
+	var bool=reg.test(txt.value);
+	console.log(bool)
+	//先查找当前文本框旁边的div
+	var div=txt.nextElementSibling;
+	//如果验证通过
+	if(bool){
+		//就修改旁边div的className为vali_success
+		div.className="vali_success";
+	}else{//否则(如果验证没通过)
+		//就修改旁边div的className为vali_fail
+		div.className="vali_fail";
+	}
+	return bool
+}
+txtPwd.onblur=function(){
+	var reg=/^\d{6}$/;
+	vali(this,reg);
+}
+var btn=document.getElementById("btn1")
+ 
+btn.onclick=function(){
+	console.log(vali(txtName,/^\w{1,10}$/))
+	if(vali(txtName,/^\w{1,10}$/)==false){
+		txtName.focus();
+	}else if(vali(txtPwd,/^\d{6}$/)==false){
+		txtPwd.focus();
+	}else{
+		alert(`${txtName.value}的用户登录成功`)
+	}
+}
+    </script>
+    <iframe src="footer.html" frameborder="0" width="100%" height="220px"></iframe>
+</body>
+</html>

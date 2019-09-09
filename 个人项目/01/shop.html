@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href=".css/shop.css">
+    <link rel="stylesheet" href=".css/header.css">
+    <link rel="stylesheet" href=".css/footer.css">
+    <iframe src="header.html" frameborder="0" width="100%"></iframe>
+    <script src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <div id="app" class="container">
+                <h3>总价:￥{{total.toFixed(2)}}</h3>
+                <ul @click="del" id="gwc_ul">
+                        <li class="m0" id="gwc_1"><span class="m1"><input type="checkbox" class="xz">全选</span> <span class="m2" id="dj">
+                            单价</span>
+                           <span class="m3" id="sl">数量</span> <span class="m4" id="xj">小计</span></li>
+                        <li class="m0" v-for="(item,i) of cart" :key="i"><input class="xz" type="checkbox" v-model="item.is_checked">
+                             <span class="m1">{{item.pname}}</span> {{item.pid}} <span class="m2">￥{{item.price.toFixed(2)}}</span>   
+                             <span  class="m3"><button class="add" @click="add(-1,i)">-</button>{{item.count}}
+                                <button class="add" @click="add(1,i)">+</button></span>  
+                             <span  class="m4" >{{(item.price*item.count).toFixed(2)}}</span> <button :data-i="i">×</button></li>
+                    </ul>
+                <h3>总计:￥{{total.toFixed(2)}}</h3>
+            </div>
+    <iframe src="footer.html" frameborder="0" width="100%" height="220px"></iframe>
+    <script>
+            var vm=new Vue({
+              el:"#app",
+              data:{
+                cart:[
+                    {pid:2,pname:"小米",price:1200,count:1,is_checked:true},
+                {pname:"华为",pid:3,price:1400,count:1,is_checked:true},
+                {pname:"苹果",pid:4,price:1500,count:1,is_checked:false}
+                ]
+              },
+              methods:{
+                  del(e){
+                    if(e.target.nodeName=="BUTTON" && e.target.innerHTML=="×"){
+                        var n=parseInt(e.target.dataset.i)
+                        this.cart.splice(n,1)
+                    }
+                  },
+                  add(n,i){
+                    this.cart[i].count+=n;
+                    if(this.cart[i].count==0){
+                        this.cart.splice(i,1)
+                    }
+                  }
+              },
+              computed:{
+                  total(){
+                    var total=0;
+                    for(var p of this.cart){
+                        total+=p.price*p.count
+                    }
+                    return total
+                  }
+              }
+            })
+            </script>
+</body>
+</html>

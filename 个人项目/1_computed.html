@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <style>
+    #app{
+      width:1240px;
+
+    }
+    .m1{
+      width:460px;
+    }
+    .m2{
+      margin-left: 460px;
+      width:180px;
+    }
+    .m3{
+      margin-left: 100px;
+      width:180px;
+    }
+    .m4{
+      margin-left: 150px;
+      width:180px;
+    }
+    #dj{
+      margin-left: 510px;
+    }
+    #sl{
+      margin-left: 120px;
+    }
+    #xj{
+      margin-left: 180px;
+    }
+  </style>
+</head>
+<body>
+<div id="app" class="container">
+    <h3>总价:￥{{total.toFixed(2)}}</h3>
+    <ul @click="del" id="gwc_ul">
+        <li class="m0" id="gwc_1"><span class="m1"><input type="checkbox">全选</span> <span class="m2" id="dj">单价</span>
+           <span class="m3" id="sl">数量</span> <span class="m4" id="xj">小计</span></li>
+        <li class="m0" v-for="(item,i) of cart" :key="i"><input type="checkbox" v-model="item.is_checked">
+             <span class="m1">{{item.pname}}</span> {{item.pid}} <span class="m2">￥{{item.price.toFixed(2)}}</span>   
+             <span  class="m3"><button @click="add(-1,i)">-</button>{{item.count}}<button @click="add(1,i)">+</button></span>  
+             <span  class="m4" >{{(item.price*item.count).toFixed(2)}}</span> <button :data-i="i">×</button></li>
+    </ul>
+    <h3>总计:￥{{total.toFixed(2)}}</h3>
+</div>
+<script>
+var vm=new Vue({
+  el:"#app",
+  data:{
+    cart:[
+        {pid:2,pname:"小米",price:1200,count:1,is_checked:true},
+    {pname:"华为",pid:3,price:1400,count:1,is_checked:true},
+    {pname:"苹果",pid:4,price:1500,count:1,is_checked:false}
+    ]
+  },
+  methods:{
+      del(e){
+        if(e.target.nodeName=="BUTTON" && e.target.innerHTML=="×"){
+            var n=parseInt(e.target.dataset.i)
+            this.cart.splice(n,1)
+        }
+      },
+      add(n,i){
+        this.cart[i].count+=n;
+        if(this.cart[i].count==0){
+            this.cart.splice(i,1)
+        }
+      }
+  },
+  computed:{
+      total(){
+        var total=0;
+        for(var p of this.cart){
+            total+=p.price*p.count
+        }
+        return total
+      }
+  }
+})
+</script>
+</body>
+</html>
